@@ -1,12 +1,15 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-    name: my-app
-    annotations:
-        nginx.ingress.kubernetes.io/rewrite-target: /
+  name: my-app
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-    rules:
-    - http:
+  ingressClassName: nginx
+  rules:
+    - host: sikeat.me        # ← your exact Namecheap domain e.g. sikeat.com
+      http:
         paths:
           - path: /
             pathType: Prefix
@@ -14,4 +17,14 @@ spec:
               service:
                 name: my-app
                 port:
-                  number: 80
+                  number: 8080
+    - host: www.sikeat.me      # ← www version
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: my-app
+                port:
+                  number: 8080
