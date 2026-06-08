@@ -1,0 +1,26 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: main-gateway
+  namespace: default
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: sikeat-me-tls
+      hosts:
+        - "sikeat.me"
+        - "www.sikeat.me"
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "sikeat.me"
+        - "www.sikeat.me"
