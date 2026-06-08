@@ -32,6 +32,8 @@ spec:
                 secretKeyRef:
                   name: db-secret
                   key: POSTGRES_PASSWORD
+            - name: SPRINGDOC_SWAGGER_UI_URL
+              value: "https://www.sikeat.me"
           resources:
             requests:
               cpu: 250m
