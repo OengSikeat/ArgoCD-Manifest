@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: api-gateway
-          image: gotoh6951/api-gateway:1
+          image: gotoh6951/api-gateway:latest
           ports:
             - containerPort: 9090

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: mail-service
-          image: gotoh6951/mail-service:1
+          image: gotoh6951/mail-service:latest
           ports:
             - containerPort: 8081
           env:
