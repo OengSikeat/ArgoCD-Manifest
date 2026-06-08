@@ -8,4 +8,4 @@ spec:
     app: api-gateway
   ports:
     - port: 9090           # service port
-      targetPort: 9090   # container port
+      targetPort: 9090   # container portt
