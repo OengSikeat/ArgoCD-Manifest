@@ -18,6 +18,7 @@ spec:
           image: gotoh6951/my-app:18
           ports:
             - containerPort: 8080
+              protocol: TCP
           env:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://test-db:5432/testdb
