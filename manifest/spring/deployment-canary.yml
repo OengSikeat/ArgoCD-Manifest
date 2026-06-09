@@ -18,10 +18,27 @@ spec:
           image: gotoh6951/my-app:17
           ports:
             - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://test-db:5432/user_db
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: POSTGRES_USER
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: POSTGRES_PASSWORD
+            - name: SPRINGDOC_SWAGGER_UI_SERVERS_0_URL
+              value: https://www.sikeat.me
+            - name: SPRINGDOC_SWAGGER_UI_SERVERS_0_DESCRIPTION
+              value: Production
   strategy:
     canary:
-      canaryService: my-app-canary     # ← canary traffic
-      stableService: my-app-stable     # ← stable traffic
+      canaryService: my-app-canary
+      stableService: my-app-stable
       trafficRouting:
         istio:
           virtualService:
