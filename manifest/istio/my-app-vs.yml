@@ -1,18 +1,25 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: my-app
+  name: my-app-vs
   namespace: default
 spec:
   hosts:
     - my-app
   http:
-    - retries:
+    - name: primary          # ← must match rollout route name
+      retries:
         attempts: 3
         perTryTimeout: 5s
       timeout: 15s
       route:
         - destination:
-            host: my-app
+            host: my-app-stable
             port:
-              number: 80
+              number: 8080
+          weight: 100        # ← Argo Rollouts controls this automatically
+        - destination:
+            host: my-app-canary
+            port:
+              number: 8080
+          weight: 0          # ← starts at 0, Argo shifts it
