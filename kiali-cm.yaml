@@ -74,6 +74,8 @@ data:
         enabled: true
       istio:
         root_namespace: istio-system
+      prometheus:
+        url: "http://monitoring-kube-prometheus-prometheus.default.svc.cluster.local:9090"
       tracing:
         enabled: false
     identity:
