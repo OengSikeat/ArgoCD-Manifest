@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: my-app
-          image: gotoh6951/my-app:latest
+          image: gotoh6951/my-app:17
           ports:
             - containerPort: 8080
   strategy:
