@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: my-app
-          image: gotoh6951/my-app:20
+          image: gotoh6951/my-app:21
           ports:
             - containerPort: 8080
               protocol: TCP
