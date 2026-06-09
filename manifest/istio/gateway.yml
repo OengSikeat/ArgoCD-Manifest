@@ -17,6 +17,9 @@ spec:
       hosts:
         - "sikeat.me"
         - "www.sikeat.me"
+        - "argocd.sikeat.me"
+        - "kiali.sikeat.me"
+        - "grafana.sikeat.me"
     - port:
         number: 80
         name: http
@@ -24,3 +27,6 @@ spec:
       hosts:
         - "sikeat.me"
         - "www.sikeat.me"
+        - "argocd.sikeat.me"
+        - "kiali.sikeat.me"
+        - "grafana.sikeat.me"

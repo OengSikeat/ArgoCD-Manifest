@@ -7,7 +7,7 @@ spec:
   hosts:
     - "argocd.sikeat.me"
   gateways:
-    - main-gateway
+    - default/main-gateway
   http:
     - route:
         - destination:
@@ -24,7 +24,7 @@ spec:
   hosts:
     - "kiali.sikeat.me"
   gateways:
-    - main-gateway
+    - default/main-gateway
   http:
     - route:
         - destination:
