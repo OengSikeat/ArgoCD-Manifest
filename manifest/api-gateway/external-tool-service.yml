@@ -7,11 +7,11 @@ spec:
   hosts:
     - "argocd.sikeat.me"
   gateways:
-    - default/main-gateway
+    - main-gateway
   http:
     - route:
         - destination:
-            host: argocd-server
+            host: argocd-server.argocd.svc.cluster.local
             port:
               number: 80
 ---
@@ -19,16 +19,16 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: kiali
-  namespace: istio-system
+  namespace: default
 spec:
   hosts:
     - "kiali.sikeat.me"
   gateways:
-    - default/main-gateway
+    - main-gateway
   http:
     - route:
         - destination:
-            host: kiali
+            host: kiali.istio-system.svc.cluster.local
             port:
               number: 20001
 ---
@@ -41,10 +41,10 @@ spec:
   hosts:
     - "grafana.sikeat.me"
   gateways:
-    - default/main-gateway
+    - main-gateway
   http:
     - route:
         - destination:
-            host: monitoring-grafana
+            host: monitoring-grafana.default.svc.cluster.local
             port:
               number: 80
