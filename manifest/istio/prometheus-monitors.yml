@@ -1,0 +1,40 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: envoy-stats-monitor
+  namespace: istio-system
+  labels:
+    monitoring: istio-proxies
+spec:
+  selector:
+    matchExpressions:
+    - key: istio-prometheus-ignore
+      operator: DoesNotExist
+  namespaceSelector:
+    any: true
+  jobLabel: envoy-stats
+  podMetricsEndpoints:
+  - path: /stats/prometheus
+    targetPort: 15090
+    interval: 15s
+    relabelings:
+    - action: keep
+      sourceLabels: [__meta_kubernetes_pod_container_name]
+      regex: "istio-proxy"
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: istiod-monitor
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      istio: pilot
+  namespaceSelector:
+    matchNames:
+    - istio-system
+  jobLabel: istio-pilot
+  podMetricsEndpoints:
+  - port: http-monitoring
+    interval: 15s
