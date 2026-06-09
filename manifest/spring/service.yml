@@ -7,5 +7,6 @@ spec:
   selector:
     app: my-app
   ports:
-    - port: 80           # service port
-      targetPort: 8080   # container port
+    - name: http-app
+      port: 80
+      targetPort: 8080
