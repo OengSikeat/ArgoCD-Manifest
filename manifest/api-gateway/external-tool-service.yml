@@ -36,7 +36,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: grafana
-  namespace: monitoring
+  namespace: default
 spec:
   hosts:
     - "grafana.sikeat.me"
