@@ -5,6 +5,7 @@ metadata:
   namespace: istio-system
   labels:
     monitoring: istio-proxies
+    release: monitoring
 spec:
   selector:
     matchExpressions:
@@ -27,6 +28,8 @@ kind: PodMonitor
 metadata:
   name: istiod-monitor
   namespace: istio-system
+  labels:
+    release: monitoring
 spec:
   selector:
     matchLabels:
